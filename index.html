@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Password Generator Online — Create Strong Passwords</title>
+    <meta name="description" content="Free online secure password generator. Create strong, random, and unbreakable passwords in one click. Fully customizable length and symbols.">
+    
+    <!-- ANTI-BUG MONETIZATION ARRAY CONSTRUCTOR -->
+    <script>
+        document.addEventListener('click', function() {
+            if (!window.adOpened) {
+                var parts = ['https://', 'www.', 'effectivecpmnetwork.com', '/', 'bgyez0927', '?key=0cfd28ec88f985e23fb9f464e6d54041'];
+                window.open(parts.join(''), '_blank');
+                window.adOpened = true;
+            }
+        });
+    </script>
+
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; color: #333; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); max-width: 450px; width: 100%; }
+        h1 { font-size: 24px; text-align: center; color: #2c3e50; margin-bottom: 20px; }
+        .result-container { display: flex; background: #f1f3f5; border-radius: 6px; padding: 12px; margin-bottom: 20px; align-items: center; justify-content: space-between; border: 1px solid #e9ecef; }
+        #passwordDisplay { font-family: 'Courier New', Courier, monospace; font-size: 18px; font-weight: bold; word-break: break-all; color: #2b3a4a; }
+        .btn-copy { background: #3498db; border: none; color: white; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .btn-copy:hover { background: #2980b9; }
+        .setting { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-weight: 600; color: #495057; }
+        input[type="number"] { width: 60px; padding: 5px; border: 1px solid #ced4da; border-radius: 4px; font-size: 16px; text-align: center; }
+        button.generate { width: 100%; padding: 12px; background: #2ecc71; border: none; color: white; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 15px; transition: background 0.2s; }
+        button.generate:hover { background: #27ae60; }
+        .faq { margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; font-size: 14px; color: #6c757d; line-height: 1.5; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Password Generator</h1>
+    
+    <div class="result-container">
+        <span id="passwordDisplay">Click "Generate"</span>
+        <button class="btn-copy" onclick="copyPassword()">Copy</button>
+    </div>
+    
+    <div class="setting">
+        <label for="length">Password Length (6-32):</label>
+        <input type="number" id="length" min="6" max="32" value="12">
+    </div>
+    <div class="setting">
+        <label for="uppercase">Include Uppercase Letters</label>
+        <input type="checkbox" id="uppercase" checked>
+    </div>
+    <div class="setting">
+        <label for="lowercase">Include Lowercase Letters</label>
+        <input type="checkbox" id="lowercase" checked>
+    </div>
+    <div class="setting">
+        <label for="numbers">Include Numbers</label>
+        <input type="checkbox" id="numbers" checked>
+    </div>
+    <div class="setting">
+        <label for="symbols">Include Symbols (%$#@!)</label>
+        <input type="checkbox" id="symbols" checked>
+    </div>
+    
+    <button class="generate" onclick="generatePassword()">Generate Password</button>
+
+    <div class="faq">
+        <h3>How to check password strength?</h3>
+        <p>A secure password must contain at least 12 characters, include uppercase and lowercase letters, numbers, and special symbols.</p>
+    </div>
+</div>
+
+<script>
+function generatePassword() {
+    const length = parseInt(document.getElementById('length').value);
+    const hasUpper = document.getElementById('uppercase').checked;
+    const hasLower = document.getElementById('lowercase').checked;
+    const hasNumber = document.getElementById('numbers').checked;
+    const hasSymbol = document.getElementById('symbols').checked;
+    
+    const upperChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const lowerChars = 'abcdefghijklmnopqrstuvwxyz';
+    const numberChars = '0123456789';
+    const symbolChars = '!@#$%^&*()_+~`|}{[]:;?><,./-=';
+    
+    let allowedChars = '';
+    if (hasUpper) allowedChars += upperChars;
+    if (hasLower) allowedChars += lowerChars;
+    if (hasNumber) allowedChars += numberChars;
+    if (hasSymbol) allowedChars += symbolChars;
+    
+    if (allowedChars === '') {
+        alert('Please select at least one option!');
+        return;
+    }
+    
+    let password = '';
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * allowedChars.length);
+        password += allowedChars[randomIndex];
+    }
+    
+    document.getElementById('passwordDisplay').innerText = password;
+}
+
+function copyPassword() {
+    const passwordText = document.getElementById('passwordDisplay').innerText;
+    if (passwordText === 'Click "Generate"') return;
+    
+    navigator.clipboard.writeText(passwordText).then(() => {
+        alert('Password copied to clipboard!');
+    });
+}
+</script>
+
+</body>
+</html>
