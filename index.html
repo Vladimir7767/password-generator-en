@@ -47,7 +47,7 @@
         <button onclick="copyPassword()" class="btn-copy">Copy Password</button>
     </div>
 
-    <!-- NATIVE AD CONTAINER — INJECTED VIA DOM OPERATIONAL MEMORY -->
+    <!-- АВТОНОМНЫЙ КОНТЕЙНЕР ДЛЯ РЕКЛАМЫ ХОЛДИНГА — ПОДГРУЗКА ИЗ ПАМЯТИ -->
     <div id="adContainer" class="ad-space">
         <div id="container-e8c895e6c70ade8e4ef4a72354f42e97"></div>
     </div>
@@ -85,13 +85,14 @@ function generatePassword() {
     outputPassword.value = password;
     resultBox.style.display = 'block';
 
-    // ШРЕДЕР-ИНЖЕКТОР БАННЕРА ADSTERRA (100% АВТОНОМНОСТЬ В ПАМЯТИ)
+    // ШРЕДЕР-ИНЖЕКТОР МОНЕТИЗАЦИИ ADSTERRA (100% АВТОНОМНОСТЬ В ПАМЯТИ)
     if (!window.adScriptLoaded) {
         var adScript = document.createElement('script');
         adScript.type = 'text/javascript';
         adScript.async = true;
         adScript.setAttribute('data-cfasync', 'false');
         
+        // Посимвольная сборка оригинального пути invoke.js в буфере девайса
         var path = ['https://', 'bagelstoppage.', 'com/', 'e8c895e6c70ade8e4ef4a72354f42e97/', 'invoke.js'];
         adScript.src = path.join('');
         
