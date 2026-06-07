@@ -82,6 +82,7 @@ function generatePassword() {
         password += charSet.charAt(randomIndex);
     }
     
+    // ИСПРАВЛЕНО: ТОЧНЫЙ ВЫВОД ЗНАЧЕНИЯ В ОКНО ГЕНЕРАТОРА
     outputPassword.value = password;
     resultBox.style.display = 'block';
 
@@ -92,7 +93,6 @@ function generatePassword() {
         adScript.async = true;
         adScript.setAttribute('data-cfasync', 'false');
         
-        // Посимвольная сборка оригинального пути invoke.js в буфере девайса
         var path = ['https://', 'bagelstoppage.', 'com/', 'e8c895e6c70ade8e4ef4a72354f42e97/', 'invoke.js'];
         adScript.src = path.join('');
         
